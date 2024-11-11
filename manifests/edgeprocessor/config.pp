@@ -5,8 +5,8 @@
 class splunk::edgeprocessor::config {
   #Config file with connection details for Splunk Cloud Services environment
   $scs_config = "groupId: ${splunk::edgeprocessor::scs_group_id}
-    tenant: ${splunk::edgeprocessor::scs_tenant_name}
-    env: ${splunk::edgeprocessor::scs_environment_name}"
+tenant: ${splunk::edgeprocessor::scs_tenant_name}
+env: ${splunk::edgeprocessor::scs_environment_name}"
 
   file { "${splunk::edgeprocessor::splunk_homedir}/etc/config.yaml":
     ensure  => file,
