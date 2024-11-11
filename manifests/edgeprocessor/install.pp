@@ -13,7 +13,7 @@ class splunk::edgeprocessor::install (
   notify { 'homedir':
     message => "variable homedir is: ${splunk::edgeprocessor::splunk_homedir}|",
   }
-  notify { 'hextract_pat':
+  notify { 'extract_path':
     message => "variable extract_path is: ${extract_path}|",
   }
   archive { $archive_name:
@@ -25,8 +25,8 @@ class splunk::edgeprocessor::install (
     extract_path  => $extract_path,
     creates       => $splunk::edgeprocessor::splunk_homedir,
     cleanup       => true,
-    user          => $splunk::edgeprocessor::splunk_user,
-    group         => $splunk::edgeprocessor::splunk_user,
+    # user          => $splunk::edgeprocessor::splunk_user,
+    # group         => $splunk::edgeprocessor::splunk_user,
   }
   file { "${splunk::edgeprocessor::splunk_homedir}/var/log":
     ensure => directory,
