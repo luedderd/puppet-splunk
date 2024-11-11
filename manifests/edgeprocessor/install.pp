@@ -15,7 +15,7 @@ class splunk::edgeprocessor::install (
   notify { 'archive_name':
     message => "variable archive_name is: ${archive_name}|",
   }
-  archive { $splunk::edgeprocessor::archive_name:
+  archive { $archive_name:
     path          => "/tmp/${archive_name}",
     source        => $splunk::edgeprocessor::package_url,
     checksum      => $splunk::edgeprocessor::splunk_package_checksum,
