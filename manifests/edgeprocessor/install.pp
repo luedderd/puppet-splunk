@@ -3,9 +3,10 @@
 #   for successfully installing the Splunk Edge Processor
 #
 class splunk::edgeprocessor::install (
-  #String[1] $archive_name = regsubst($splunk::edgeprocessor::package_url, '([^\/]+\.tar\.gz)$', '\1'),
+  String[1] $archive_name = regsubst($splunk::edgeprocessor::package_url, '([^\\/]+\\.tar\\.gz)$', '\\1'),
+  #String[1] $archive_name = regsubst($splunk::edgeprocessor::package_url, '(\S*\/)[^\/]+\.tar\.gz$', '\1'),
   #String[1] $archive_name = $splunk::edgeprocessor::package_url.match(),
-  String[1] $archive_name = match($splunk::edgeprocessor::package_url, '([^\/]+\.tar\.gz)$')
+  #String[1] $archive_name = match($splunk::edgeprocessor::package_url, '([^\/]+\.tar\.gz)$')
 ) {
   #Download and unpack the Splunk Edge Processor
   notify { 'package_url':
