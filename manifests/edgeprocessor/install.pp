@@ -6,6 +6,12 @@ class splunk::edgeprocessor::install (
   String[1] $archive_name = regsubst($splunk::edgeprocessor::package_url, '([^\/]+\.tar\.gz)$', '\\1'),
 ) {
   #Download and unpack the Splunk Edge Processor
+  notify { 'package_url':
+    message => "variable package_url is: ${splunk::edgeprocessor::package_url}|",
+  }
+  notify { 'archive_name':
+    message => "variable archive_name is: ${archive_name}|",
+  }
   archive { $splunk::edgeprocessor::archive_name:
     path          => "/tmp/${archive_name}",
     source        => $splunk::edgeprocessor::package_url,
