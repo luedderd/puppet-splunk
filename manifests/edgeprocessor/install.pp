@@ -15,18 +15,18 @@ class splunk::edgeprocessor::install (
   notify { 'archive_name':
     message => "variable archive_name is: ${archive_name}|",
   }
-  # archive { $splunk::edgeprocessor::archive_name:
-  #   path          => "/tmp/${archive_name}",
-  #   source        => $splunk::edgeprocessor::package_url,
-  #   checksum      => $splunk::edgeprocessor::splunk_package_checksum,
-  #   checksum_type => $splunk::edgeprocessor::checksum_type,
-  #   extract       => true,
-  #   extract_path  => "${splunk::edgeprocessor::splunk_homedir}/..",
-  #   creates       => $splunk::edgeprocessor::splunk_homedir,
-  #   cleanup       => true,
-  #   user          => $splunk::edgeprocessor::splunk_user,
-  #   group         => $splunk::edgeprocessor::splunk_user,
-  # }
+  archive { $splunk::edgeprocessor::archive_name:
+    path          => "/tmp/${archive_name}",
+    source        => $splunk::edgeprocessor::package_url,
+    checksum      => $splunk::edgeprocessor::splunk_package_checksum,
+    checksum_type => $splunk::edgeprocessor::checksum_type,
+    extract       => true,
+    extract_path  => "${splunk::edgeprocessor::splunk_homedir}/..",
+    creates       => $splunk::edgeprocessor::splunk_homedir,
+    cleanup       => true,
+    user          => $splunk::edgeprocessor::splunk_user,
+    group         => $splunk::edgeprocessor::splunk_user,
+  }
   file { "${splunk::edgeprocessor::splunk_homedir}/var/log":
     ensure => directory,
     owner  => $splunk::edgeprocessor::splunk_user,
