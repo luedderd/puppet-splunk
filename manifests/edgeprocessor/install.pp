@@ -28,6 +28,12 @@ class splunk::edgeprocessor::install (
     # user          => $splunk::edgeprocessor::splunk_user,
     # group         => $splunk::edgeprocessor::splunk_user,
   }
+  file { $splunk::edgeprocessor::splunk_homedir:
+    ensure  => directory,
+    recurse => true,
+    owner   => $splunk::edgeprocessor::splunk_user,
+    group   => $splunk::edgeprocessor::splunk_user,
+  }
   file { "${splunk::edgeprocessor::splunk_homedir}/var/log":
     ensure => directory,
     owner  => $splunk::edgeprocessor::splunk_user,
